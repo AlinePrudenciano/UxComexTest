@@ -1,0 +1,52 @@
+﻿@model UxComexTest.MVC.Models.AddressModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Endereço</h1>
+
+<h3>Remover</h3>
+<div>
+    <h4>Deseja realmente excluir este endereço?</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2" style="display:none">
+            UserId
+        </dt>
+        <dd class="col-sm-10" style="display:none">
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+        <dt class="col-sm-2">
+            Endereço
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AddressName)
+        </dd>
+        <dt class="col-sm-2">
+            CEP
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cep)
+        </dd>
+        <dt class="col-sm-2">
+            Cidade
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt class="col-sm-2">
+            Estado
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.State)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Excluir" class="btn btn-danger" /> |
+        <a asp-controller="User" asp-action="Edit" asp-route-id="@Model.UserId">Voltar</a>
+    </form>
+</div>

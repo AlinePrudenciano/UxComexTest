@@ -1,0 +1,99 @@
+﻿@model UxComexTest.MVC.Models.UserModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Usuário</h1>
+
+<h4>Edição</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div class="form-row">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group row col-md-6">
+                    <label for="Name" class="col-1 col-form-label">Nome</label>
+                    <div class="col-11">
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row col-md-3">
+                    <label for="Phone" class="col-3 col-form-label">Telefone</label>
+                    <div class="col-9">
+                        <input asp-for="Phone" class="form-control" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row col-md-3">
+                    <label for="Cpf" class="col-3 col-form-label">CPF</label>
+                    <div class="col-9">
+                        <input asp-for="Cpf" class="form-control" />
+                        <span asp-validation-for="Cpf" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row col-md-1">
+                    <div class="col-9">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<br/><br/>
+<div class="row">
+    <div class="col-md-12">
+
+        <p>
+            <a class="btn btn-primary" asp-controller="Address" asp-action="Create" asp-route-userid="@Model.Id" >+ Endereço</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Endereço</th>
+                    <th>CEP</th>
+                    <th>Cidade</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Addresses)
+                {
+                    <tr>
+                        <td>
+                            <a asp-controller="Address" asp-action="Delete" asp-route-id="@item.Id">X</a>
+                        </td>
+                        <td>
+                            <a asp-controller="Address" asp-action="Edit" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.AddressName)</a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cep)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.City)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.State)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<br/><br/>
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

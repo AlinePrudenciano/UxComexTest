@@ -1,0 +1,41 @@
+﻿@model IEnumerable<UxComexTest.MVC.Models.UserModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Usuários</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">+ Cadastro</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>CPF</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.Id">X</a>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cpf)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
