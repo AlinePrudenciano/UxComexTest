@@ -32,11 +32,11 @@ Para visualizar a api, favor usar http://localhost:5001/swagger
 <br> Exemplo utilizando o UserId = 1
 ```
    {
- 	 "id": 1,
-  	"adressname": "endereço1",
-  	"cep": "09570200",
-	  "city": "sao caetano",
-	  "state": "sao paulo"
+ 	 "userId": 1,
+  	 "adressname": "endereço1",
+  	 "cep": "09570200",
+	 "city": "sao caetano",
+	 "state": "sao paulo"
 	}
   ```
 
